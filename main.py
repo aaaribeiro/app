@@ -1,10 +1,14 @@
-from fastapi import FastAPI, Form, Request, Response
-# import requests
+from fastapi import FastAPI, Request
 
 app = FastAPI()
- 
-@app.get("/hello")
+
+@app.get("/")
 def root():
+  return {"message": "root directory"}
+
+
+@app.get("/hello")
+def hello_world():
   """
   Hello world
   This is just to test the fast api's documentation features
