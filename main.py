@@ -15,4 +15,4 @@ def root():
 @app.post("/hook")
 async def chat(request: Request):
   # print(dir(request.json()))
-  return await request.json()
+  return await request.body()
