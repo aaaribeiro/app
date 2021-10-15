@@ -1,4 +1,6 @@
-from fastapi import FastAPI, Form, Response
+from fastapi import FastAPI, Form, Request, Response
+# from fastapi.encoders import jsonable_encoder
+# from fastapi.responses import JSONResponse
 
 app = FastAPI()
  
@@ -8,6 +10,5 @@ def root():
 
 
 @app.post("/hook")
-async def chat(From: str = Form(...), Body: str = Form(...)): 
-   msg = {f"Hi {From}, you said: {Body}"}
-   return Response(content=str(msg), media_type="application/json")
+async def chat(request: Request):
+  return await request.json()
