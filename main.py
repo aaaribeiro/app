@@ -2,19 +2,7 @@ from fastapi import FastAPI, Form, Request, Response
 from pydantic import BaseModel
 # from fastapi.encoders import jsonable_encoder
 # from fastapi.responses import JSONResponse
-"""
-  "Id": 2843,
-  "Type": 2,
-  "Subject": "Lentidão Abertura Mapa",
-  "Urgency": "Medium",
-  "Status": "New",
-  "Origin": 1,
-  "IsDeleted": false,
-  "ServiceFirstLevel": "ConnectMaster",
-  "ActionCount": 1,
-  "ResolvedInFirstCall": false,
-  "SlaSolutionTime": 28800,
-"""
+
 class WeebhookResponse(BaseModel):
   id: int
   type_: int
