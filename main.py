@@ -8,7 +8,6 @@ def root():
 
 
 @app.post("/hook")
-async def chat():
-#   response = MessagingResponse()
-   msg = {f"Hi, you said: ok"}
-   return msg
+async def chat(From: str = Form(...), Body: str = Form(...)): 
+   msg = {f"Hi {From}, you said: {Body}"}
+   return Response(content=str(msg), media_type="application/xml")
