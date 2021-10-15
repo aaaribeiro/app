@@ -9,7 +9,7 @@ def root():
   Hello world
   This is just to test the fast api's documentation features
   """
-  return {"message": "Hello World!"}
+  return {"message": "Nunca esqueça você é o cara!"}
 
 
 @app.post("/hook")
