@@ -1,6 +1,5 @@
-from typing import Sequence
-from sqlalchemy import Column, ForeignKey, Integer, String, Sequence, DateTime
-from sqlalchemy.orm import relationship, Session
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
 
 from .database import Base
 

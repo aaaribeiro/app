@@ -1,5 +1,4 @@
 # app/schema.py
-
 from app.models import Tickets, Organizations
 from pydantic import BaseModel
 
