@@ -51,5 +51,6 @@ async def create_ticket(ticket: schemas.Ticket, db: Session=Depends(get_db)):
 async def chat(request: Request):
 #   print(await request.json())
 #   ticket_id = request.json()["Id"]
-  print(request.json()["Id"])
-  return await request.json()["Id"]
+    ticket_id = (await request.json())["Id"]
+    print(ticket_id)
+    return await request.json()
