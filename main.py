@@ -10,8 +10,7 @@ def root():
 @app.get("/hello")
 def hello_world():
   """
-  Hello world
-  This is just to test the fast api's documentation features
+  Hello world this is just to test the fast api's documentation features
   """
   return {"message": "Nunca esqueça você é o cara!"}
 

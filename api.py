@@ -1,7 +1,7 @@
 # app/api.py
 
 from typing import List
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, Request
 from sqlalchemy.orm import Session
 
 import crud, models, schemas
@@ -45,3 +45,9 @@ async def create_ticket(ticket: schemas.Ticket, db: Session=Depends(get_db)):
     if db_ticket:
         raise HTTPException(status_code=400, detail="Ticket already registered")
     return crud.create_ticket(db=db, ticket=ticket)
+
+
+@app.post("/netcon/v1/movidesk/webhook/status")
+async def chat(request: Request):
+  print(await request.json())
+  return await request.json()
