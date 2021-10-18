@@ -33,7 +33,7 @@ class Webhook(BaseModel):
     change_in: str
     change_value: str
     change_status: bool
-    created_date: datetime.datetime
+    created_date: datetime
 
     class Config:
         orm_mode = True
