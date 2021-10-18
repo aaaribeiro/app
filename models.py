@@ -1,6 +1,9 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql.expression import null
+from sqlalchemy.sql.sqltypes import Boolean, DateTime
 
+from datetime import datetime
 from database import Base
 
 
@@ -25,3 +28,14 @@ class Organizations(Base):
     client_id = Column(String, primary_key=True, nullable=False)
     client_name = Column(String, nullable=False)
     tickets = relationship("Tickets")
+
+
+class Webhook(Base):
+
+    __tablename__ = "webhook"
+
+    change_id = Column(Integer, primary_key=True, nullable=False)
+    change_in = Column(String, nullable=False)
+    change_value = Column(String, nullable=False)
+    change_status = Column(Boolean, nullable=True, default=True)
+    created_date = Column(DateTime, nullable=False, default=datetime.now())

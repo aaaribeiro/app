@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+# from sqlalchemy import func
 import models, schemas
 
 
@@ -45,3 +46,19 @@ def get_tickets(db: Session, skip: int = 0, limit: int = 100):
 def get_ticket_by_id(db: Session, id: int):
     return db.query(models.Tickets).filter(models.Tickets.ticket_id==id).first()
 
+
+# def get_webhook_max_id(db: Session):
+#     return db.query(func.max(models.Webhook)).filter(models.Tickets.ticket_id==id).first()
+
+def create_webhook(db: Session, webhook: schemas.Webhook):
+    db_webhook = models.Webhook(
+        change_id = webhook.change_id,
+        change_in = webhook.change_in,
+        change_value =  webhook.change_value,
+        change_status = webhook.change_status,
+        created_date = webhook.created_date
+        )
+    db.add(db_webhook)
+    db.commit()
+    db.refresh(db_webhook)
+    return db_webhook
