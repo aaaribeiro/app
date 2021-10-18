@@ -19,13 +19,13 @@ def get_db():
         db.close()
 
 
-@app.get("netcon/v1/movidesk/organizations", response_model=List[schemas.Organization])
+@app.get("/netcon/v1/movidesk/organizations", response_model=List[schemas.Organization])
 def read_organizations(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     organizations = crud.get_organizations(db, skip=skip, limit=limit)
     return organizations
 
 
-@app.post("netcon/v1/movidesk/organization", response_model=schemas.Organization)
+@app.post("/netcon/v1/movidesk/organization", response_model=schemas.Organization)
 async def create_organization(organization: schemas.Organization, db: Session=Depends(get_db)):
     customer = crud.get_customer_by_id(db, id=organization.client_id)
     if customer:
@@ -33,13 +33,13 @@ async def create_organization(organization: schemas.Organization, db: Session=De
     return crud.create_organization(db=db, organization=organization)
 
 
-@app.get("netcon/v1/movidesk/tickets", response_model=List[schemas.Ticket])
+@app.get("/netcon/v1/movidesk/tickets", response_model=List[schemas.Ticket])
 def read_tickets(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     tickets = crud.get_tickets(db, skip=skip, limit=limit)
     return tickets
 
 
-@app.post("netcon/v1/movidesk/ticket", response_model=schemas.Ticket)
+@app.post("/netcon/v1/movidesk/ticket", response_model=schemas.Ticket)
 async def create_ticket(ticket: schemas.Ticket, db: Session=Depends(get_db)):
     db_ticket = crud.get_ticket_by_id(db, id=ticket.ticket_id)
     if db_ticket:
