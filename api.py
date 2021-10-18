@@ -1,5 +1,6 @@
 # app/api.py
 
+from datetime import datetime
 from typing import List
 from fastapi import Depends, FastAPI, HTTPException, Request
 from sqlalchemy.orm import Session
@@ -52,7 +53,9 @@ async def create_webhook(request: Request, db: Session=Depends(get_db)):
     db_webhook = schemas.Webhook
     db_webhook.change_id = 1
     db_webhook.change_in = "STATUS"
+    db_webhook.change_status = True
     db_webhook.change_value = (await request.json())["Status"]
+    db_webhook.created_date = datetime.now()
 
     return crud.create_webhook(db=db, webhook=db_webhook)
     # ticket_id = (await request.json())["Id"]

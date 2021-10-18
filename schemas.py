@@ -1,6 +1,6 @@
 # app/schema.py
 from datetime import datetime
-from models import Tickets, Organizations
+from models import Tickets, Organizations, Webhook
 from pydantic import BaseModel
 
 
